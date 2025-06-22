@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Kyrgos Sandler | Data Scientist · ML Engineer</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0f0f1a;
+      --text: #f5f5f5;
+      --accent: #48e5c2;
+      --muted: #999;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      cursor: url('https://cdn-icons-png.flaticon.com/32/3468/3468287.png'), auto;
+    }
+
+    html, body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Inter', sans-serif;
+      scroll-behavior: smooth;
+    }
+
+    /* Sidebar Navigation */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 160px;
+      height: 100%;
+      background-color: #121222;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 2rem 1rem;
+      z-index: 1000;
+    }
+
+    nav a {
+      color: var(--accent);
+      text-decoration: none;
+      margin: 1rem 0;
+      font-weight: 600;
+      transition: transform 0.3s ease;
+    }
+
+    nav a:hover {
+      transform: scale(1.1);
+    }
+
+    section, header {
+      margin-left: 160px;
+      padding: 5rem 2rem;
+      max-width: 900px;
+    }
+
+    /* Ticker */
+    .ticker {
+      position: fixed;
+      top: 0;
+      left: 160px;
+      right: 0;
+      height: 30px;
+      background: #181824;
+      color: var(--accent);
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+      z-index: 2000;
+      font-weight: 600;
+      border-bottom: 1px solid #333;
+    }
+
+    .ticker-text {
+      white-space: nowrap;
+      animation: scrollTicker 15s linear infinite;
+      padding-left: 100%;
+    }
+
+    @keyframes scrollTicker {
+      from { transform: translateX(0); }
+      to { transform: translateX(-100%); }
+    }
+
+    /* Background video */
+    .bg-video {
+      position: absolute;
+      top: 0;
+      left: 160px;
+      width: calc(100% - 160px);
+      height: 100vh;
+      object-fit: cover;
+      z-index: -1;
+      filter: brightness(0.25);
+    }
+
+    header {
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: flex-start;
+      animation: fadeInSlide 2s ease-in;
+    }
+
+    .name {
+      font-size: 3rem;
+      font-weight: 700;
+      background: linear-gradient(90deg, var(--accent), #7fffd4);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .typing-text {
+      font-size: 1.3rem;
+      margin-top: 0.5rem;
+      color: var(--muted);
+      height: 2rem;
+    }
+
+    .bio {
+      margin-top: 2rem;
+      font-size: 1rem;
+      line-height: 1.8;
+      animation: fadeIn 2.5s ease;
+      max-width: 720px;
+    }
+
+    .section-title {
+      font-size: 1.6rem;
+      font-weight: 600;
+      color: var(--accent);
+      margin-bottom: 1.5rem;
+      animation: slideInLeft 1s ease;
+    }
+
+    .experience, .projects, .story, .education {
+      display: grid;
+      gap: 1.5rem;
+    }
+
+    .card {
+      background: #181824;
+      padding: 1.5rem;
+      border-radius: 10px;
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
+      animation: zoomIn 1s ease;
+    }
+
+    .card:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 20px #48e5c280;
+    }
+
+    .card h4 {
+      margin-bottom: 0.5rem;
+      color: var(--accent);
+    }
+
+    .card p {
+      font-size: 0.95rem;
+      color: var(--text);
+    }
+
+    .footer {
+      margin-left: 160px;
+      text-align: center;
+      margin-top: 5rem;
+      color: var(--muted);
+      font-size: 0.9rem;
+      padding-bottom: 2rem;
+    }
+
+    a { color: var(--accent); }
+    a:hover { text-decoration: underline; }
+
+    @keyframes fadeIn {
+      0% { opacity: 0; }
+      100% { opacity: 1; }
+    }
+
+    @keyframes slideInLeft {
+      from { opacity: 0; transform: translateX(-30px); }
+      to { opacity: 1; transform: translateX(0); }
+    }
+
+    @keyframes zoomIn {
+      0% { transform: scale(0.95); opacity: 0; }
+      100% { transform: scale(1); opacity: 1; }
+    }
+
+    @keyframes fadeInSlide {
+      0% { transform: translateY(20px); opacity: 0; }
+      100% { transform: translateY(0); opacity: 1; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Vertical nav -->
+  <nav>
+    <a href="#story">Story</a>
+    <a href="#experience">Experience</a>
+    <a href="#projects">Projects</a>
+    <a href="#education">Education</a>
+    <a href="#contact">Contact</a>
+  </nav>
+
+  <!-- Ticker headline -->
+  <div class="ticker">
+    <div class="ticker-text">🚀 Data Scientist | 🧠 ML Engineer | 🛠️ Full-Stack Developer | 🎯 Turning data into insights | 🐍 Python lover | 💡 Building with code & curiosity</div>
+  </div>
+
+  <!-- Background video -->
+  <video autoplay muted loop playsinline class="bg-video">
+    <source src="https://cdn.coverr.co/videos/coverr-coding-in-the-dark-5003/1080p.mp4" type="video/mp4">
+  </video>
+
+  <!-- Hero Section -->
+  <header>
+    <h1 class="name">Kyrgos Sandler</h1>
+    <div class="typing-text" id="typing"></div>
+    <p class="bio">
+      I'm a data scientist and software engineer passionate about turning information into insight. With a background in machine learning, natural language processing, and full-stack development, I love building intelligent systems that solve real-world problems.
+    </p>
+  </header>
+
+  <!-- Content Sections -->
+  <section id="story">
+    <h2 class="section-title">My Story</h2>
+    <div class="story">
+      <div class="card"><h4>Curious Beginnings</h4><p>I started coding as a teenager, automating everything from schoolwork to browser tasks. That curiosity turned into a passion for data-driven decision-making.</p></div>
+      <div class="card"><h4>University to Industry</h4><p>At the University of Toronto, I dove deep into data science, algorithms, and distributed systems — skills I now use every day in the real world.</p></div>
+      <div class="card"><h4>What Drives Me</h4><p>Solving hard problems with elegant code and clean data pipelines. Whether it's detecting trends, building APIs, or training models — I’m in my element.</p></div>
+    </div>
+  </section>
+
+  <section id="experience">
+    <h2 class="section-title">Experience</h2>
+    <div class="experience">
+      <div class="card"><h4>Data Science Developer @ Bell Canada</h4><p>Built scalable ETL workflows and predictive analytics tools for internal product optimization. Migrated legacy systems to GCP-based architecture.</p></div>
+      <div class="card"><h4>AI Intern @ Kuarts</h4><p>Developed NLP systems for extracting valuation metrics from financial documents using spaCy and Transformers. Integrated ML pipelines into dashboard visualizations.</p></div>
+      <div class="card"><h4>Data Science Intern @ CaptionPlus</h4><p>Worked on computer vision and NLP-based recommendation systems. Helped improve video engagement using content-aware captioning strategies.</p></div>
+    </div>
+  </section>
+
+  <section id="projects">
+    <h2 class="section-title">Projects</h2>
+    <div class="projects">
+      <div class="card"><h4>Resume Ranker</h4><p>A deep learning pipeline that parses and ranks resumes based on job descriptions using cosine similarity and embeddings (BERT).</p></div>
+      <div class="card"><h4>PDF Financial Extractor</h4><p>Built a Python tool that extracts key metrics from messy PDFs using regex, OCR, and Named Entity Recognition. Used in financial analytics workflows.</p></div>
+      <div class="card"><h4>Interactive ML Dashboard</h4><p>A Streamlit-powered dashboard to visualize model performance, ROC curves, and feature importances with real-time predictions and explanations.</p></div>
+    </div>
+  </section>
+
+  <section id="education">
+    <h2 class="section-title">Education & Honours</h2>
+    <div class="education">
+      <div class="card"><h4>Georgia Institute of Technology</h4><p>BSc. in Computer Science & Statistics, High Distinction<br>GPA: 3.91 / 4.00<br>Courses: Machine Learning, Natural Language Computing, Operating Systems, Advanced Data Analysis, Algorithms<br>Honors: Dean's List</p></div>
+      <div class="card"><h4>Academic Highlights</h4><p>Led research projects in data analysis and machine learning. Enjoyed coursework focused on high-performance computing and AI ethics.</p></div>
+    </div>
+  </section>
+
+  <div class="footer" id="contact">
+    Let’s connect — <a href="https://www.linkedin.com">LinkedIn</a> · <a href="mailto:KyrgosSandler2199@gmail.com">Email</a><br>
+    Made with Python and passion by Kaartik
+  </div>
+
+  <!-- Typing Animation Script -->
+  <script>
+    const roles = ["a Data Scientist", "a Machine Learning Engineer", "a Developer", "an NLP Enthusiast", "a Curious Coder"];
+    const typing = document.getElementById("typing");
+    let i = 0, j = 0, current = roles[0], isDeleting = false;
+
+    function type() {
+      if (isDeleting) {
+        if (j > 0) {
+          typing.innerHTML = current.substring(0, j - 1);
+          j--;
+        } else {
+          isDeleting = false;
+          i = (i + 1) % roles.length;
+          current = roles[i];
+        }
+      } else {
+        if (j < current.length) {
+          typing.innerHTML = current.substring(0, j + 1);
+          j++;
+        } else {
+          isDeleting = true;
+        }
+      }
+      setTimeout(type, isDeleting ? 40 : 90);
+    }
+    type();
+  </script>
+</body>
+</html>
