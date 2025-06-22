@@ -45,7 +45,7 @@
     nav a {
       color: var(--accent);
       text-decoration: none;
-      margin: 1rem 0;
+      margin: 0.75rem 0;
       font-weight: 600;
       transition: transform 0.3s ease;
     }
@@ -140,7 +140,7 @@
       animation: slideInLeft 1s ease;
     }
 
-    .experience, .projects, .story, .education {
+    .experience, .projects, .story, .education, .influences {
       display: grid;
       gap: 1.5rem;
     }
@@ -166,6 +166,40 @@
     .card p {
       font-size: 0.95rem;
       color: var(--text);
+    }
+
+    /* Skills Radar / Heatmap */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+      gap: 1rem;
+    }
+
+    .skill {
+      position: relative;
+      padding: 1.5rem 0.75rem;
+      border-radius: 10px;
+      background: #181824;
+      text-align: center;
+      font-weight: 600;
+      transition: transform 0.3s ease;
+      overflow: hidden;
+    }
+
+    .skill span {
+      position: relative;
+      z-index: 2;
+    }
+
+    .skill:hover { transform: scale(1.05);}    
+
+    /* Learning Now */
+    .learning-text {
+      font-size: 1.1rem;
+      font-weight: 500;
+      color: var(--text);
+      min-height: 1.3rem;
+      animation: fadeIn 0.6s ease;
     }
 
     .footer {
@@ -205,7 +239,9 @@
 
   <!-- Vertical nav -->
   <nav>
-    <a href="#story">Story</a>
+    <a href="#influences">Influences</a>
+    <a href="#learning">Learning</a>
+     <a href="#skills">Skills</a>
     <a href="#experience">Experience</a>
     <a href="#projects">Projects</a>
     <a href="#education">Education</a>
@@ -231,13 +267,37 @@
     </p>
   </header>
 
-  <!-- Content Sections -->
-  <section id="story">
-    <h2 class="section-title">My Story</h2>
-    <div class="story">
-      <div class="card"><h4>Curious Beginnings</h4><p>I started coding as a teenager, automating everything from schoolwork to browser tasks. That curiosity turned into a passion for data-driven decision-making.</p></div>
-      <div class="card"><h4>University to Industry</h4><p>At the University of Toronto, I dove deep into data science, algorithms, and distributed systems — skills I now use every day in the real world.</p></div>
-      <div class="card"><h4>What Drives Me</h4><p>Solving hard problems with elegant code and clean data pipelines. Whether it's detecting trends, building APIs, or training models — I’m in my element.</p></div>
+    <!-- Influences -->
+  <section id="influences">
+    <h2 class="section-title">The 5 Things That Shaped Me</h2>
+    <div class="influences">
+      <div class="card"><h4>The Pragmatic Programmer</h4><p>This book taught me to think critically about code craftsmanship and pragmatic problem‑solving. It played a huge role in captivating my interest in coding and solving problems. I highly suggest the book to anybody aspiring to be a programmer.</p></div>
+      <div class="card"><h4>Mentor – Dr. Lee</h4><p>Guided my journey in ML, instilling rigor and curiosity. His anecdotes and objective teaching methodology made me fall in love with ML. Eversince, I have tried to be a positve nfluential personality in lives of those I am mentoring or I am working with. </p></div>
+      <div class="card"><h4>Startup Failure #1</h4><p>A failed app launch that showed the value of user research and resilience. Made me realise that losing is the key ingredient of success, and the quicker you fail, the quicker you learn.</p></div>
+      <div class="card"><h4>Hiking the Andes</h4><p>Weeks offline reminded me about perseverance and systems thinking in nature. I learnt how to switch between different facets of life, as well as stimulated my journey into opening a hiking club in Toronto! </p></div>
+    </div>
+  </section>
+
+
+
+  <!-- Learning Now -->
+  <section id="learning">
+    <h2 class="section-title">What I'm Learning Now</h2>
+    <p class="learning-text" id="learning-text"></p>
+  </section>
+
+
+    <section id="skills">
+    <h2 class="section-title">Skills Radar</h2>
+    <div class="skills-grid">
+      <div class="skill" data-level="95"><span>Python</span></div>
+      <div class="skill" data-level="90"><span>TensorFlow</span></div>
+      <div class="skill" data-level="85"><span>SQL</span></div>
+      <div class="skill" data-level="80"><span>React</span></div>
+      <div class="skill" data-level="75"><span>Docker</span></div>
+      <div class="skill" data-level="70"><span>AWS</span></div>
+      <div class="skill" data-level="65"><span>Rust</span></div>
+      <div class="skill" data-level="60"><span>D3.js</span></div>
     </div>
   </section>
 
@@ -272,8 +332,9 @@
     Made with Python and passion by Kaartik
   </div>
 
-  <!-- Typing Animation Script -->
+  <!-- Typing Animation & Dynamic Scripts -->
   <script>
+    // Typing effect for roles
     const roles = ["a Data Scientist", "a Machine Learning Engineer", "a Developer", "an NLP Enthusiast", "a Curious Coder"];
     const typing = document.getElementById("typing");
     let i = 0, j = 0, current = roles[0], isDeleting = false;
@@ -299,6 +360,29 @@
       setTimeout(type, isDeleting ? 40 : 90);
     }
     type();
+
+    // Dynamic background for skill blocks based on data-level
+    document.querySelectorAll('.skill').forEach(el => {
+      const level = +el.dataset.level;
+      const alpha = Math.max(0.35, level / 100); // ensure visibility
+      el.style.background = `linear-gradient(135deg, rgba(72,229,194,${alpha}) 0%, #181824 100%)`;
+    });
+
+    // Rotating "What I'm Learning Now" items
+    const learningItems = [
+      "LangChain & AI Agents",
+      "Rust Programming",
+      "Graph Neural Networks",
+      "Ultramarathon Training",
+      "Atomic Habits (Book)"
+    ];
+    const learningText = document.getElementById("learning-text");
+    let li = 0;
+    learningText.textContent = learningItems[0];
+    setInterval(() => {
+      li = (li + 1) % learningItems.length;
+      learningText.textContent = learningItems[li];
+    }, 2500);
   </script>
 </body>
 </html>
